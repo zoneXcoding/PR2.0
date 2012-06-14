@@ -56,7 +56,7 @@ public class Player {
             playerRect.x = 785;
         playerRect.y -= Jump;
         if(Jump >= 1)
-            Jump -= .5;
+            Jump -= .25;
         System.out.println(playerRect.x);
         gravity();
     }
@@ -86,7 +86,7 @@ public class Player {
             setXDirection(-1);
         }
         if(e.getKeyCode() == KeyEvent.VK_SPACE && Grounded){
-            Jump = 5;
+            Jump = 10;
         }
     }
     public void keyReleased(KeyEvent e){
