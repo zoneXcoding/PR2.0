@@ -79,6 +79,10 @@ public class Player {
         if(e.getKeyCode() == KeyEvent.VK_A){
             setXDirection(-1);
         }
+        if(e.getKeyCode() == KeyEvent.VK_ESCAPE){
+            System.out.println("Goodbye!");
+            System.exit(0);
+        }
     }
     public void keyReleased(KeyEvent e){
         if(e.getKeyCode() == KeyEvent.VK_D){

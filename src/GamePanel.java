@@ -15,12 +15,14 @@ public class GamePanel extends JPanel implements Runnable {
     static final Dimension gameDim = new Dimension(GWIDTH, GHEIGHT);
     //Game variables
     private Thread game;
-    private volatile boolean running = false;
+    public volatile boolean running = false;
     private long period = 6*1000000; //ms -> nano
     private static final int DELAYS_BEFORE_YEILD = 10;
     //Game Objects
     World world;
     Player p1;
+    private boolean MainMenu;
+    private boolean Playing;
     
     public GamePanel(){
         world = new World();
@@ -137,8 +139,15 @@ public class GamePanel extends JPanel implements Runnable {
     /* Draw all game content in this method  world.draw(g);
         p1.draw(g); */
     public void draw(Graphics g){
-            world.draw(g);
-            p1.draw(g);
+        if(MainMenu){
+            g.setFont(new Font("Times New Roman", Font.BOLD, 14));
+            g.setColor(Color.WHITE);
+            g.drawString("ParaRaiders", 300, 35);
+        }
+        if(Playing){
+        world.draw(g);
+        p1.draw(g);
+        }
     }
     
     @Override
