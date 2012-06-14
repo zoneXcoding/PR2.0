@@ -18,7 +18,9 @@ public class Player {
     //Block variables
     private int hoverX, hoverY;
     private boolean hovering = false;
+    public boolean canMove = true;
     private int x;
+    private int xPos;
     
     public Player(World world){
         try {
@@ -41,7 +43,6 @@ public class Player {
     
     public void update(){
         move();
-        checkForCollision();
     }
     
     private void move(){
@@ -60,9 +61,6 @@ public class Player {
         }
     }
     
-    private void checkForCollision(){
-    }
-    
     //Drawing methods
     public void draw(Graphics g){
         g.drawImage(playerImg, playerRect.x, playerRect.y, null);
@@ -71,10 +69,17 @@ public class Player {
     //Key events
     public void keyPressed(KeyEvent e){
         if(e.getKeyCode() == KeyEvent.VK_D){
-            setXDirection(1);
+            if(x <= 10){
+                setXDirection(1);
+            }
         }
         if(e.getKeyCode() == KeyEvent.VK_A){
-                setXDirection(-1);
+                if(canMove){
+                    setXDirection(-1);
+                }
+                else if(!canMove){
+                    setXDirection(0);
+                }
         }
     }
     public void keyReleased(KeyEvent e){
@@ -87,6 +92,22 @@ public class Player {
     }
     public void keyTyped(KeyEvent e){
         
+    }
+
+    private void canMoveForward() {
+        if(x <= 0){
+            canMove = true;
+        }else{
+            canMove = false;
+        }
+    }
+
+    private void canMoveBackward() {
+        if(x >= 100){
+            canMove = true;
+        }else{
+            canMove = false;
+        }
     }
     
 }
