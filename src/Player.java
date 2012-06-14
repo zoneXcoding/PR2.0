@@ -69,17 +69,10 @@ public class Player {
     //Key events
     public void keyPressed(KeyEvent e){
         if(e.getKeyCode() == KeyEvent.VK_D){
-            if(x <= 10){
-                setXDirection(1);
-            }
+            setXDirection(1);
         }
         if(e.getKeyCode() == KeyEvent.VK_A){
-                if(canMove){
-                    setXDirection(-1);
-                }
-                else if(!canMove){
-                    setXDirection(0);
-                }
+            setXDirection(-1);
         }
     }
     public void keyReleased(KeyEvent e){
@@ -93,21 +86,4 @@ public class Player {
     public void keyTyped(KeyEvent e){
         
     }
-
-    private void canMoveForward() {
-        if(x <= 0){
-            canMove = true;
-        }else{
-            canMove = false;
-        }
-    }
-
-    private void canMoveBackward() {
-        if(x >= 100){
-            canMove = true;
-        }else{
-            canMove = false;
-        }
-    }
-    
 }
