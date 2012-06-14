@@ -48,6 +48,10 @@ public class Player {
     private void move(){
         playerRect.x += xDirection;
         playerRect.y += yDirection;
+        if(x <= 0)
+            x = 0;
+        if(x >= 800)
+            x = 800;
         gravity();
     }
     
