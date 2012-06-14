@@ -48,10 +48,11 @@ public class Player {
     private void move(){
         playerRect.x += xDirection;
         playerRect.y += yDirection;
-        if(x <= 0)
-            x = 0;
-        if(x >= 800)
-            x = 800;
+        if(playerRect.x <= 0)
+            playerRect.x = 0;
+        if(playerRect.x >= 785)
+            playerRect.x = 785;
+        System.out.println(playerRect.x);
         gravity();
     }
     
