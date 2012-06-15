@@ -57,7 +57,6 @@ public class Player {
         playerRect.y -= Jump;
         if(Jump >= 1)
             Jump -= .25;
-        System.out.println(playerRect.x);
         gravity();
     }
     
