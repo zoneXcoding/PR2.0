@@ -24,7 +24,6 @@ public class GamePanel extends JPanel implements Runnable {
     World world;
     Player p1;
     Shoot s;
-    private boolean Player = false;
     
     public GamePanel(){
         world = new World();
@@ -84,7 +83,7 @@ public class GamePanel extends JPanel implements Runnable {
             gameUpdate();
             gameRender();
             paintScreen();
-            //Remember to add s.updateBullets();
+            s.updateBullets();
             
             afterTime = System.nanoTime();
             diff = afterTime - beforeTime;
@@ -149,12 +148,11 @@ public class GamePanel extends JPanel implements Runnable {
     }
     
     /* Draw all game content in this method  world.draw(g);
-        p1.draw(g); s.paint(g); */
+        p1.draw(g); */
     public void draw(Graphics g){
-        if(Player){
             world.draw(g);
             p1.draw(g);
-        }
+            s.paint(g);
     }
     
     @Override
