@@ -1,6 +1,8 @@
 import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JPanel;
@@ -15,25 +17,32 @@ public class GamePanel extends JPanel implements Runnable {
     static final Dimension gameDim = new Dimension(GWIDTH, GHEIGHT);
     //Game variables
     private Thread game;
-    public volatile boolean running = false;
+    private volatile boolean running = false;
     private long period = 6*1000000; //ms -> nano
     private static final int DELAYS_BEFORE_YEILD = 10;
     //Game Objects
     World world;
     Player p1;
-    private boolean MainMenu = false;
-    private boolean Playing = false;
-    private boolean Instructions = false;
+    Shoot s;
     
     public GamePanel(){
         world = new World();
         p1 = new Player(world);
+        s = new Shoot();
         
         setPreferredSize(gameDim);
         setBackground(Color.WHITE);
         setFocusable(true);
         requestFocus();
         //Handle all key inputs from user
+        addMouseListener(new MouseAdapter(){
+	public void mousePressed(MouseEvent e)
+	{
+		int xCoord = e.getX();
+		int yCoord = e.getY();
+                s.MousePressed(e);
+        }
+        });
         addKeyListener(new KeyAdapter(){
             @Override
             public void keyPressed(KeyEvent e){
@@ -140,26 +149,8 @@ public class GamePanel extends JPanel implements Runnable {
     /* Draw all game content in this method  world.draw(g);
         p1.draw(g); */
     public void draw(Graphics g){
-        MainMenu = true;
-        if(MainMenu){
-            //Title
-            g.setColor(Color.white);
-            g.setFont(new Font("Times New Roman", Font.BOLD, 36));
-            g.drawString("ParaRaiders", 300, 25);
-            
-            //StartButton
-            g.setFont(new Font("Times New Roman", Font.PLAIN, 14));
-            g.drawRect(320, 50, 150, 45);
-            g.drawString("Start Game", 350, 75);
-        }
-        if(Instructions){
-            
-        }
-        if(Playing){
-            MainMenu = false;
             world.draw(g);
             p1.draw(g);
-        }
     }
     
     @Override

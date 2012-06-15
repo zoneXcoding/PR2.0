@@ -12,6 +12,8 @@ public class Player {
     
     private Rectangle playerRect;
     private Image playerImg;
+    private boolean Grounded;
+    private int Jump;
     
     protected int xDirection, yDirection;
     
@@ -52,6 +54,9 @@ public class Player {
             playerRect.x = 0;
         if(playerRect.x >= 785)
             playerRect.x = 785;
+        playerRect.y -= Jump;
+        if(Jump >= 1)
+            Jump -= .25;
         System.out.println(playerRect.x);
         gravity();
     }
@@ -62,6 +67,7 @@ public class Player {
                 setYDirection(1);
             }else if(world.isSolid[i] && playerRect.intersects(world.blocks[i])){
                 setYDirection(0);
+                Grounded = true;
             }
         }
     }
@@ -79,9 +85,8 @@ public class Player {
         if(e.getKeyCode() == KeyEvent.VK_A){
             setXDirection(-1);
         }
-        if(e.getKeyCode() == KeyEvent.VK_ESCAPE){
-            System.out.println("Goodbye!");
-            System.exit(0);
+        if(e.getKeyCode() == KeyEvent.VK_SPACE && Grounded){
+            Jump = 10;
         }
     }
     public void keyReleased(KeyEvent e){
