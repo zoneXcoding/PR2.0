@@ -1,4 +1,3 @@
-
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
@@ -28,12 +27,13 @@ public class Shoot
     {
         x = e.getX();
         y = e.getY();
-        bulletX[select] = x += 10;
-        bulletY[select] = y += 10;
+        bulletX[select] = (x += 100);
+        bulletY[select] = (y += -100);
+        System.out.println(bulletY[select]);
     }
     public void updateBullets()
     {
-        for(int i = 0; i < 500; i++)
+        for(int i = 0; i < 100; i++)
         {
             if(bulletX[i] >= 800 && bulletX[i] <= 0 && bulletY[i] >= 0 && bulletY[i] <= 700)
             {
