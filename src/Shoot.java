@@ -16,6 +16,13 @@ public class Shoot
     public Shoot()
     {
         select = 0;
+        for(int i = 0; i < 100; i++)
+        {
+            bulletX[i] = -500;
+            bulletY[i] = 0;
+            bullets[i] = new Rectangle(bulletX[i], bulletY[i], 10, 5);
+
+        }
     }
     public void MousePressed(MouseEvent e)
     {
