@@ -1,6 +1,8 @@
 import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JPanel;
@@ -21,16 +23,26 @@ public class GamePanel extends JPanel implements Runnable {
     //Game Objects
     World world;
     Player p1;
+    Shoot s;
     
     public GamePanel(){
         world = new World();
         p1 = new Player(world);
+        s = new Shoot();
         
         setPreferredSize(gameDim);
         setBackground(Color.WHITE);
         setFocusable(true);
         requestFocus();
         //Handle all key inputs from user
+        addMouseListener(new MouseAdapter(){
+	public void mousePressed(MouseEvent e)
+	{
+		int xCoord = e.getX();
+		int yCoord = e.getY();
+                s.MousePressed(e);
+        }
+        });
         addKeyListener(new KeyAdapter(){
             @Override
             public void keyPressed(KeyEvent e){
