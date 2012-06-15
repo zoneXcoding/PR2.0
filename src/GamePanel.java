@@ -21,8 +21,9 @@ public class GamePanel extends JPanel implements Runnable {
     //Game Objects
     World world;
     Player p1;
-    private boolean MainMenu;
-    private boolean Playing;
+    private boolean MainMenu = false;
+    private boolean Playing = false;
+    private boolean Instructions = false;
     
     public GamePanel(){
         world = new World();
@@ -139,14 +140,25 @@ public class GamePanel extends JPanel implements Runnable {
     /* Draw all game content in this method  world.draw(g);
         p1.draw(g); */
     public void draw(Graphics g){
+        MainMenu = true;
         if(MainMenu){
-            g.setFont(new Font("Times New Roman", Font.BOLD, 14));
-            g.setColor(Color.WHITE);
-            g.drawString("ParaRaiders", 300, 35);
+            //Title
+            g.setColor(Color.white);
+            g.setFont(new Font("Times New Roman", Font.BOLD, 36));
+            g.drawString("ParaRaiders", 300, 25);
+            
+            //StartButton
+            g.setFont(new Font("Times New Roman", Font.PLAIN, 14));
+            g.drawRect(320, 50, 150, 45);
+            g.drawString("Start Game", 350, 75);
+        }
+        if(Instructions){
+            
         }
         if(Playing){
-        world.draw(g);
-        p1.draw(g);
+            MainMenu = false;
+            world.draw(g);
+            p1.draw(g);
         }
     }
     
