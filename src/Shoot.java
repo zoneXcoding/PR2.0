@@ -1,3 +1,4 @@
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
@@ -43,10 +44,11 @@ public class Shoot
             bullets[i] = new Rectangle(bulletX[i], bulletY[i], 10, 5);
         }
     }
-    public void paint(Graphics g)
+    public void draw(Graphics g)
     {
         for(int i = 0; i < 100; i++)
         {
+            g.setColor(Color.GREEN);
             g.fillRect(bullets[i].x, bullets[i].y, bullets[i].width, bullets[i].height);
         }
     }

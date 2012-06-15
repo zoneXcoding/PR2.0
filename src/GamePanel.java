@@ -152,7 +152,7 @@ public class GamePanel extends JPanel implements Runnable {
     public void draw(Graphics g){
             world.draw(g);
             p1.draw(g);
-            s.paint(g);
+            s.draw(g);
     }
     
     @Override
