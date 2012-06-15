@@ -54,6 +54,10 @@ public class Player {
             playerRect.x = 0;
         if(playerRect.x >= 785)
             playerRect.x = 785;
+        if(playerRect.y <= 0)
+            playerRect.y = 0;
+        if(playerRect.y >= 400)
+            playerRect.y = 400;
         playerRect.y -= Jump;
         if(Jump >= 1)
             Jump -= .25;

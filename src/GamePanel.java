@@ -83,6 +83,7 @@ public class GamePanel extends JPanel implements Runnable {
             gameUpdate();
             gameRender();
             paintScreen();
+            s.updateBullets();
             
             afterTime = System.nanoTime();
             diff = afterTime - beforeTime;
@@ -151,6 +152,7 @@ public class GamePanel extends JPanel implements Runnable {
     public void draw(Graphics g){
             world.draw(g);
             p1.draw(g);
+            s.paint(g);
     }
     
     @Override
