@@ -12,7 +12,6 @@ public class Player {
     
     private Rectangle playerRect;
     private Image playerImg;
-    private boolean Grounded;
     private int Jump;
     
     protected int xDirection, yDirection;
@@ -20,9 +19,9 @@ public class Player {
     //Block variables
     private int hoverX, hoverY;
     private boolean hovering = false;
-    public boolean canMove = true;
     private int x;
     private int xPos;
+    private boolean Grounded;
     
     public Player(World world){
         try {

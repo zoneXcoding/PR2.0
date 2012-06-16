@@ -3,6 +3,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JPanel;
@@ -18,12 +19,15 @@ public class GamePanel extends JPanel implements Runnable {
     //Game variables
     private Thread game;
     private volatile boolean running = false;
+    boolean MainMenu = false;
+    Image MainMenuImg;
     private long period = 6*1000000; //ms -> nano
     private static final int DELAYS_BEFORE_YEILD = 10;
     //Game Objects
     World world;
     Player p1;
     Shoot s;
+    private boolean Playing;
     
     public GamePanel(){
         world = new World();
@@ -149,7 +153,7 @@ public class GamePanel extends JPanel implements Runnable {
     
     /* Draw all game content in this method  world.draw(g);
         p1.draw(g); */
-    public void draw(Graphics g){
+    public void draw(Graphics g){ 
             world.draw(g);
             p1.draw(g);
             s.draw(g);
