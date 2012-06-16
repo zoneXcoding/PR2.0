@@ -10,7 +10,7 @@ public class Player {
     
     private World world;
     
-    private Rectangle playerRect;
+    public Rectangle playerRect;
     private Image playerImg;
     private boolean Grounded;
     private int Jump;
