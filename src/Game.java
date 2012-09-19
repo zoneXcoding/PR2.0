@@ -6,6 +6,7 @@ public class Game extends JFrame{
     
     public Game(){
         gp = new GamePanel();
+        setTitle("ParaRaiders 2.0");
         setSize(800, 425);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
